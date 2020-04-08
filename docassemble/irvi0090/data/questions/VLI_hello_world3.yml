@@ -1,0 +1,45 @@
+objects:
+ VLIfamilyinfo: DAList
+---
+question: Variables
+mandatory: True
+subquestion: |
+ List of family members.
+ 
+
+ 
+---
+variable name: VLIfamilyinfo
+use objects: True
+data:
+ - First Name: Vanessa
+   Last Name: Irvine
+   Age: 21
+   Hobbies: Video games
+   Likes pets?: True
+ - First Name: Holly
+   Last Name: Irvine
+   Age: 17
+   Hobbies: Music
+   Likes pets?: True
+ - First Name: Clint
+   Last Name: Irvine
+   Age: 51
+   Hobbies: Eating pizza
+   Likes pets?: True
+ - First Name: Renee
+   Last Name: Irvine
+   Age: 49
+   Hobbies: Reading
+   Likes pets?: True
+ 
+---
+mandatory: True
+question: Iteration
+subquestion: |
+ Item|Name
+ ---|---
+ % for VLIitem in VLIfamilyinfo:
+ $ { loop.index + 1 }|${ VLIitem }
+ % endfor
+---
