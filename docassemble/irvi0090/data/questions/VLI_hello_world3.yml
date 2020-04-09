@@ -6,7 +6,7 @@ mandatory: True
 subquestion: |
  List of family members.
  
-
+ ${ VLIfamilyinfo }
  
 ---
 variable name: VLIfamilyinfo
@@ -35,11 +35,25 @@ data:
  
 ---
 mandatory: True
-question: Iteration
+question: Family Information
 subquestion: |
- Item|Name
- ---|---
- % for VLIitem in VLIfamilyinfo:
- $ { loop.index + 1 }|${ VLIitem }
- % endfor
+ #### Data Table
+ 
+ ${ VLIcolumn_header }
+ ${ VLIdashes }
+ %for VLIitem in VLItable_rows:
+ ${ VLIitem }
+ %endfor
+---
+code: |
+ VLIcolumn_header = ""
+ 
+ for VLIitem in VLIfamilyinfo[0]:
+  VLIcolumn_header += VLIitem + '|'
+  
+ VLIcolumn_header = VLIcolumn_header[:-1]
+ 
+ VLIdashes = '---'
+range(len(VLIfamilyinfo[0] - 1):
+  VLIdashes += '|---'
 ---
